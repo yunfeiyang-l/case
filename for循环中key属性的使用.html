@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>for循环中key属性的使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="ID">
+                Id：<input type="text" id="ID" v-model='id'>
+            </label>
+            <label for="Name">
+                Name：<input type="text" id="Name" v-model='name'>
+            </label>
+            <button @click='add'>添加</button>
+        </div>
+        <p v-for='item in list' :key="item.id">
+            <input type="checkbox">{{item.id}}---{{item.name}}
+        </p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                id: '',
+                name: '',
+                list: [{
+                        id: 1,
+                        name: '曹操'
+                    }, {
+                        id: 2,
+                        name: '刘备'
+                    },
+                    {
+                        id: 3,
+                        name: '张飞'
+                    }, {
+                        id: 4,
+                        name: '关羽'
+                    },
+                ]
+            },
+            methods: {
+                add() {
+
+                    this.list.unshift({
+                        id: this.id,
+                        name: this.name
+                    })
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
